@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.2.0/aframe.min.js" integrity="sha512-/gO16YMp20RIqCZXZyvMlzALQqEoiDU0akshw25wFiXCRGl+0p/HPWkOd8HWFn6bnatGhxakGLfYhWaPPVQIyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+<script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+<!--AFRAME-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Iceland&display=swap" rel="stylesheet"> 
+<!--Iceland & black ops one font-->
+
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+<!-- typewriter script-->
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title id="titletype"></title>
+<script>
+var p = document.getElementById('titletype');
+p.innerHTML = '';
+var n = 0;
+var str = 'R O O M';
+var typeTimer = setInterval(function() {
+  n = n + 1;
+  p.innerHTML = " " + str.slice(0, n);
+  if (n === str.length) {
+    clearInterval(typeTimer);
+    p.innerHTML = " " + str;
+    n = 0;
+    setInterval(function() {
+
+      if (n === 0) {
+        p.innerHTML = " " + str + "█"
+        n = 1;
+      } else {
+        p.innerHTML = " " + str
+        n = 0;
+      };
+    }, 300);
+  };
+}, 150)
+</script>
+    <!-- <link rel="shortcut icon" href="https://lenr.gq/favicon.png"> -->
+<!--title and favicon-->
+</head>
+
+<body>
+<a-scene vr-mode-ui="enabled: false" loading-screen="enabled: false;">
+
+<a-entity id="rig"
+          movement-controls="speed: 0.1"
+          position="0 0 0">
+  <a-entity camera
+            position="0 1.8 0"
+            look-controls="pointerLockEnabled: true">
+            				<a-gui-cursor id="cursor"
+						  raycaster="objects: [gui-interactable]"
+						  fuse="true" fuse-timeout="2000"
+						  color="#6900ff"
+						  hover-color="#CFD8DC"
+						  active-color="#607D8B"
+						  design="ring" > <!-- dot, ring, reticle, cross  -->
+				            </a-gui-cursor> <!-- /cursor -->
+            </a-entity>
+</a-entity>
+<!--wasd camera-->
+
+<a-sky color="#000000"></a-sky>
+<!--skybox color-->
+
+<a-box material="shader: flat; repeat: 100 100; transparent: true" width="100" depth="100" position="0 0 0"
+<img src="tile.png" alt="tile">
+</a-box>
+<!--floor tile-->
+
+<a-assets>
+        <a-asset-item id="audiowide" src="Audiowide_Regular.json"></a-asset-item>
+        <a-mixin id="audiowide" text="font: #audiowide"></a-mixin>
+<!--audiowide 3d font-->
+
+        <a-asset-item id="iceland" src="Iceland_Regular.json"></a-asset-item>
+        <a-mixin id="iceland" text="font: #iceland"></a-mixin>
+<!--iceland 3d font-->
+
+        <a-asset-item id="szoba" src="szobaoptimize.obj"></a-asset-item>
+<!--room 3d modell-->
+<a-asset-item id="amongus" src="amogus.obj"></a-asset-item>
+<a-asset-item id="amongr" src="amongr.obj"></a-asset-item>
+<!--amogus import-->
+
+</a-assets>
+<!--aframe asset import-->
+
+<a-entity rotation="0 180 0" position="20, 1.8, 40" material="shader: flat; color: #6900ff" mixin="audiowide" text-geometry="value: L3NR; font: #audiowide; size: 10; height:2;">
+</a-entity>
+<!--giant "lenr" text-->
+
+<a-entity position="0 0.51 0" rotation="0 -90 0" obj-model="obj: #szoba" material="shader: flat; fog: false; transparency: true; wireframe: true; color: #6900ff">
+</a-entity>
+<a-entity position="0 0.508 0" rotation="0 -90 0" obj-model="obj: #szoba" material="shader: flat; fog: false; color: black" scale="0.9999 0.9999 0.9999">
+</a-entity>
+<!--room-->
+
+<a-entity position="-1.74 2.8 -3.33" material="shader: flat; color: #6900ff" mixin="iceland" text-geometry="value: Welcome to my webshite!; font: #iceland; size: 0.22; height: 0.001">
+</a-entity>
+<!--welcome text-->
+
+<a-entity position="-0.4 2.3 -3.33" material="shader: flat; color: #6900ff" mixin="iceland" <?php
+if (isMobile()) {
+    echo 'text-geometry="value: Touch to move forward; font: #iceland; size: 0.12; height: 0.001"';
+} else {
+    echo 'text-geometry="value: WASD to move around; font: #iceland; size: 0.12; height: 0.001"';
+};
+  ?>
+  >
+</a-entity>
+<a-entity position="-0.4 2.1 -3.33" material="shader: flat; color: #6900ff" mixin="iceland" text-geometry="value: grab n' drag to look around; font: #iceland; size: 0.1; height: 0.001">
+</a-entity>
+<!--<a-entity position="-0.6 1.9 -3.33" material="shader: flat; color: #6900ff" mixin="iceland" text-geometry="value: type https://lenr.gq/index/outpost.html/
+in the URLbar to explore further; font: #iceland; size: 0.085; height: 0.001">-->
+</a-entity>
+	<a-gui-button
+        material="shader: flat"
+        position="0.55 1.47 -1.15"
+
+		width="0.55" 
+
+		height="0.35" 
+		base-depth="0.01" 
+		depth="0.03"
+		gap="0.03"
+
+		onclick="outpostTP" key-code="32"
+		value="teleport to the outpost"
+		font-family="Iceland-Regular.ttf"	
+		font-size="0.1"
+		margin="0 0 0.01 0"
+
+		font-color="#6900ff"
+		active-color="black"
+		hover-color="black"
+		border-color="#6900ff"
+		focus-color="black"
+		background-color="black"
+
+		bevel="false"
+	>
+	</a-gui-button>
+<!--tutorial-->
+
+</a-scene>
+<!--aframe scene-->
+
+</body>
