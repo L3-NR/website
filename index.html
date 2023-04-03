@@ -12,6 +12,32 @@ a:hover {color: #00ffff;}
 color: #00ffff;
 font-size: 20px;
 }
+    
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+    color: #fff;
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  to {
+    text-shadow: none;
+    color: transparent;
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
 </style>
 <html>
 <head>
@@ -40,6 +66,7 @@ font-size: 20px;
 
 </head>
 <body>
+    <canvas id="canvas"></canvas>
 <h1 class="bigblue">Welcome to my personal home page</h1>
 <hr>
 <h1 class="bigblue"><pre>      :::        ::::::::          ::::    ::: ::::::::: 
@@ -67,6 +94,8 @@ font-size: 20px;
 </li>
 </ul>
 <hr>
+    <p>Yes the background was made by GPT4, and i don't want to learn javascript this in depth.</p>
+<hr>
 <p style="color: #00ffff">Last updated at 2023. 04. 03.</p>
 </body>
 </html>
@@ -75,5 +104,69 @@ font-size: 20px;
 console.log("Wow you pressed F12 and clicked on the console tab. Idk what you expected.");
 console.log("But here is an ASCII art of a cat i found somewhere (idk where):");
 console.log('　　　　　／＞ 　  フ\n　　　　　| 　_　 _|\n　 　　　／`ミ _ω 彡\n　　 　 /　　　 　 |\n　　　 /　 ヽ　　 ﾉ\n　／￣|　　 |　|　|\n　| (￣ヽ＿_ヽ_)_)\n　＼二つ');
+</script>
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let width = (canvas.width = window.innerWidth);
+let height = (canvas.height = window.innerHeight);
+
+window.addEventListener("resize", () => {
+ width = canvas.width = window.innerWidth;
+ height = canvas.height = window.innerHeight;
+});
+
+const colors = ["#ff00de", "#00f9ff", "#ffffff"];
+
+class Particle {
+ constructor(x, y) {
+   this.x = x;
+   this.y = y;
+   this.vx = Math.random() * (Math.random() > .5 ? -1 : +1);
+   this.vy = Math.random() * (Math.random() > .5 ? -1 : +1);
+   this.size = Math.random() * (Math.random() > .5 ? -1 : +1) * .5 + .5;
+   this.color = colors[Math.floor(Math.random() * colors.length)];
+ }
+ 
+ update() {
+   this.x += this.vx;
+   this.y += this.vy;
+   
+   if (this.x < -this.size || this.x > width + this.size) {
+     this.vx *= -1; 
+   }
+   
+   if (this.y < -this.size || this.y > height + this.size) {
+     this.vy *= -1; 
+   }
+ }
+ 
+ draw() {
+   ctx.fillStyle = this.color;
+   ctx.beginPath();
+   ctx.arc(this.x, this.y, this.size, 0, Math.PI *2);
+   ctx.fill();
+ }
+}
+
+const particles = [];
+
+for (let i = 0; i < width /10; i++) {
+ particles.push(new Particle(Math.random() * width, Math.random() * height)); 
+}
+
+function loop() {
+ requestAnimationFrame(loop);
+ ctx.fillStyle = "rgba(0,0,0,.05)";
+ ctx.fillRect(0,0,width,height);
+ 
+ for (let p of particles) {
+   p.update();
+   p.draw();
+ }
+}
+
+loop();
 </script>
 </pre>
