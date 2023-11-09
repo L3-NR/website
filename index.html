@@ -14,7 +14,6 @@
 
 <style>
 p {font-family: 'consola', monospace;}
-#text {font-family: 'consola', monospace;}
 .p {color:#6900ff;display:inline;} /*<p class="p"></p>*/
 .a {color:#00ffff;display:inline;} /*<p class="a"></p>*/
 .g {color:#00ff00;display:inline;} /*<p class="g"></p>*/
@@ -28,7 +27,7 @@ pre {border-left: 1px solid #00ffff; border-right: 1px solid #00ffff;}
 </style>
 <body style="background-color:black; color:white; font-size:1.69vh; margin:0; overflow-y:hidden; text-align:center; user-select: none; cursor: crosshair;">
 <pre style="margin:0; padding:0;display:inline-block;text-align:left;">
-<p style="display:inline;">              ▓<p class="p">█</p><p class="p">█</p>▓    ▓<p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>  <p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">▄</p>  ░▓<p class="p">█</p>  <p class="p">█</p><p class="p">█</p><p class="p">▀</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>      <p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>  <p class="p">█</p><p class="p">█</p>░<p class="p">▄</p><p class="p">▄</p><p class="p">▄</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>░░<p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p> 
+<span style="font-family: 'consola', monospace;"><p>              ▓</p><p class="p">█</p><p class="p">█</p>▓    ▓<p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>  <p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">▄</p>  ░▓<p class="p">█</p>  <p class="p">█</p><p class="p">█</p><p class="p">▀</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>      <p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>  <p class="p">█</p><p class="p">█</p>░<p class="p">▄</p><p class="p">▄</p><p class="p">▄</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>░░<p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p> 
               ▓<p class="p">█</p><p class="p">█</p>▒    ▓<p class="p">█</p>   <p class="p">▀</p>░ <p class="p">█</p><p class="p">█</p> <p class="p">▀</p><p class="p">█</p>  ▒<p class="p">█</p> ▓<p class="p">█</p><p class="p">█</p> ▒ <p class="p">█</p><p class="p">█</p>▒  ▒<p class="p">█</p><p class="p">█</p>    ▒ ░<p class="p">█</p><p class="p">█</p>▒░  <p class="p">█</p><p class="p">█</p>▒ ░▒▓<p class="p">█</p>   <p class="p">▀</p> 
  <p class="time" id="clock">00:00:00</p>     ▒<p class="p">█</p><p class="p">█</p>░    ▒<p class="p">█</p><p class="p">█</p><p class="p">█</p>   ▓<p class="p">█</p><p class="p">█</p>  <p class="p">▀</p><p class="p">█</p> <p class="p">█</p><p class="p">█</p>▒▓<p class="p">█</p><p class="p">█</p> ░<p class="p">▄</p><p class="p">█</p> ▒  ░ ▓<p class="p">█</p><p class="p">█</p><p class="p">▄</p>   ▒<p class="p">█</p><p class="p">█</p>▒▒ ▓<p class="p">█</p><p class="p">█</p>░ ▒░▒<p class="p">█</p><p class="p">█</p><p class="p">█</p><p class="p">█</p>  
  <p class="time" id="day" >Wednesday</p>    ▒<p class="p">█</p><p class="p">█</p>░    ▒▓<p class="p">█</p>  <p class="p">▄</p> ▓<p class="p">█</p><p class="p">█</p>▒  ▐▌<p class="p">█</p><p class="p">█</p>▒▒<p class="p">█</p><p class="p">█</p><p class="p">▀</p><p class="p">▀</p><p class="p">█</p><p class="p">▄</p>      ▒   <p class="p">█</p><p class="p">█</p>▒░<p class="p">█</p><p class="p">█</p>░░ ▓<p class="p">█</p><p class="p">█</p>▓ ░ ▒▓<p class="p">█</p>  <p class="p">▄</p> 
@@ -77,8 +76,8 @@ pre {border-left: 1px solid #00ffff; border-right: 1px solid #00ffff;}
    ║║║<p class="g">─</p>║║║   @@@@@@;<p class="a">░░░|\</p>                                             ║║║║║║║   
   ╔╩╩<p class="g">/</p>╩<p class="g">\</p>╩<p class="g">/</p>╗  <p class="s">██████</p>@@@@@@<p class="a">░░</p>           @          @     @        @    ╔╩╩╩╩╩╩╩╗  
  (══<p class="g">/</p>══<p class="g">/</p><p class="g">\</p>══)<p class="s">█████████</p>@@<p class="s">████</p><p class="a">░</p><p class="g">\</p><p class="a">░</p><p class="g">\</p><p class="a">░</p><p class="g">/││ \││ \/</p>@<p class="g"> \││ \│ │/ │ / </p>@<p class="g">│\ │//  │</p>(═════════) 
-/==<p class="g">/</p>==<p class="g">/</p>==<p class="g">\</p>=<p class="s">██████████████████</p><p class="a">░░</p><p class="g">\</p><p class="a">░░</p><p class="g">\│//\│//│\│\\│//\│││\\/\│/\│/\\│/</p>/===========\
-</p>
+/==<p class="g">/</p>==<p class="g">/</p>==<p class="g">\</p>=<p class="s">██████████████████</p><p class="a">░░</p><p class="g">\</p><p class="a">░░</p><p class="g">\│//\│//│\│\\│//\│││\\/\│/\│/\\│/</p><p>/===========\
+</p></span>
 </pre>
 </body>
 <script>
